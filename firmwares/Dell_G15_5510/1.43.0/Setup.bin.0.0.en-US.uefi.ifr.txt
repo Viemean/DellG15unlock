@@ -1,0 +1,95 @@
+Program version: 1.6.1, Extraction mode: UEFI, SHA256: c3e6450f4503a287ef81a93d839eada0fff8e3033aeebb9d93877cd0aa7a5194
+FormSet Guid: 8B33FFE0-D71C-4F82-9CEB-C97058C13F8E, Title: "Boot Configuration", Help: "System Boot Settings"
+	Guid Guid: 0F0B1735-87A0-4193-B266-538C38AF48CE, ExtendedOpCode: Class, Class: 0x8
+	Guid Guid: 0F0B1735-87A0-4193-B266-538C38AF48CE, ExtendedOpCode: SubClass, SubClass: 0x0
+	DefaultStore DefaultId: 0x0, Name: "Standard Default"
+	DefaultStore DefaultId: 0x1, Name: ""
+	VarStoreEfi Guid: EC87D643-EBA4-4BB5-A1E5-3F3E36B20DA9, VarStoreId: 0x1, Attributes: 0x7, Size: 0x864, Name: "Setup"
+	VarStore Guid: EC87D643-EBA4-4BB5-A1E5-3F3E36B20DA9, VarStoreId: 0x10E2, Size: 0x1, Name: "BootTime"
+	VarStore Guid: 8BE4DF61-93CA-11D2-AA0D-00E098032B8C, VarStoreId: 0x110B, Size: 0x1, Name: "SecureBoot"
+	VarStore Guid: EC87D643-EBA4-4BB5-A1E5-3F3E36B20DA9, VarStoreId: 0x100B, Size: 0x97, Name: "SetupVolatileData"
+	Form FormId: 0x1002, Title: "Boot Configuration Menu"
+		Subtitle Prompt: "Boot Configuration", Help: "", Flags: 0x0
+		End 
+		CheckBox Prompt: "BootTime Log", Help: "Enabled: Display BootTime for OS Booting", QuestionFlags: 0x10, QuestionId: 0x1, VarStoreId: 0x10E2, VarOffset: 0x0, Flags: 0x0, Default: Disabled, MfgDefault: Disabled
+		End 
+		GrayOutIf 
+			EqIdVal QuestionId: 0xC, Value: 0x1
+			SuppressIf 
+				True 
+				OneOf Prompt: "CSM Control", Help: "Detect Legacy VGA will enable CSM if Gfx device only implements legacy VBIOS (not UEFI GOP), otherwise CSM will be disabled.", QuestionFlags: 0x10, QuestionId: 0x2, VarStoreId: 0x1, VarOffset: 0x49B, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x2, Step: 0x0
+					OneOfOption Option: "Always ON" Value: 0
+					OneOfOption Option: "Always OFF" Value: 1, Default
+					OneOfOption Option: "Detect Legacy VGA" Value: 2
+				End 
+			End 
+		End 
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x5, Value: 0x1
+			OneOf Prompt: "Display Boot Mode", Help: "Select display boot mode.", QuestionFlags: 0x0, QuestionId: 0x3, VarStoreId: 0x1, VarOffset: 0x5, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x2, Step: 0x0
+				OneOfOption Option: "Normal Boot" Value: 0, Default
+				OneOfOption Option: "Quiet Boot" Value: 1
+				OneOfOption Option: "Silent Boot" Value: 2
+			End 
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x5, Value: 0x0
+			GrayOutIf 
+				True 
+				OneOf Prompt: "Display Boot Mode", Help: "Select display boot mode.", QuestionFlags: 0x0, QuestionId: 0x4, VarStoreId: 0x1, VarOffset: 0x5, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x2, Step: 0x0
+					OneOfOption Option: "Normal Boot" Value: 0, Default
+					OneOfOption Option: "Quiet Boot" Value: 1
+					OneOfOption Option: "Silent Boot" Value: 2
+				End 
+			End 
+		End 
+		OneOf Prompt: "Fast Boot", Help: "Enables/Disables boot with initialization of a minimal set of devices required to launch active boot option. Has no effect for BBS boot options.", QuestionFlags: 0x10, QuestionId: 0x5, VarStoreId: 0x1, VarOffset: 0x1, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x1, Step: 0x0
+			OneOfOption Option: "Disabled" Value: 0, Default
+			OneOfOption Option: "Enabled" Value: 1
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x5, Value: 0x0
+			OneOf Prompt: "  Fast Boot WDT", Help: "Enables/Disables Fast Boot WDT (Watch Dog Timer).", QuestionFlags: 0x10, QuestionId: 0x6, VarStoreId: 0x1, VarOffset: 0x2, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x1, Step: 0x0
+				OneOfOption Option: "Disabled" Value: 0, Default
+				OneOfOption Option: "Enabled" Value: 1
+			End 
+			OneOf Prompt: "  Skip Setup HII Update", Help: "If Enabled, skip updating HII database strings in setup menu", QuestionFlags: 0x10, QuestionId: 0x7, VarStoreId: 0x1, VarOffset: 0x3, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x1, Step: 0x0
+				OneOfOption Option: "Disabled" Value: 0
+				OneOfOption Option: "Enabled" Value: 1, Default
+			End 
+			OneOf Prompt: "  Console Input Behavior", Help: "Select how to enumerate console inputs.
+
+- Windows Console: No input consoles will be enumerated.
+
+- PS/2 Console: BIOS will check if PS/2 keyboard is connected or not. If connected, BIOS will only connect to PS/2 keyboard else BIOS will enumerate USB keyboard.
+
+- Reconnect Last Good Input Consoles: Enumerate all Console input devices that were enumerated in previous FULL boot.", QuestionFlags: 0x10, QuestionId: 0x8, VarStoreId: 0x1, VarOffset: 0x4, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x2, Step: 0x0
+				OneOfOption Option: "PS/2 Console" Value: 0, Default
+				OneOfOption Option: "Reconnect Last Good Input Consoles" Value: 1
+				OneOfOption Option: "Windows Console" Value: 2
+			End 
+		End 
+		CheckBox Prompt: "Enable Lazy ConIn", Help: "Enable Lazy ConIn", QuestionFlags: 0x0, QuestionId: 0x9, VarStoreId: 0x1, VarOffset: 0x8, Flags: 0x0, Default: Disabled, MfgDefault: Disabled
+		End 
+		OneOf Prompt: "Enable Virtual Keyboard", Help: "Enables/Disables Virtual Keyboard in BIOS", QuestionFlags: 0x10, QuestionId: 0xA, VarStoreId: 0x1, VarOffset: 0x9, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x1, Step: 0x0
+			OneOfOption Option: "Disabled" Value: 0, Default
+			OneOfOption Option: "Enabled" Value: 1
+		End 
+		OneOf Prompt: "Enforce Shell as the first boot", Help: "Enforce Shell as the first boot option.", QuestionFlags: 0x10, QuestionId: 0xB, VarStoreId: 0x1, VarOffset: 0x43, Flags: 0x10, Size: 8, Min: 0x0, Max: 0x1, Step: 0x0
+			Default DefaultId: 0x0 Value: Other
+				Value 
+					Uint64 Value: 0x0
+				End 
+			End 
+			OneOfOption Option: "Disabled" Value: 0
+			OneOfOption Option: "Enabled" Value: 1
+		End 
+		DisableIf 
+			True 
+			Numeric Prompt: "", Help: "", QuestionFlags: 0x0, QuestionId: 0xC, VarStoreId: 0x1, VarOffset: 0x537, Flags: 0x10, Size: 8, Min: 0x0, Max: 0xFF, Step: 0x0
+			End 
+		End 
+	End 
+End 
