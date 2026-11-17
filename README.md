@@ -7,7 +7,7 @@
 ## 目录结构说明
 
 - `EFI/`：UEFI 引导项，直接拷入 U 盘即可启动
-- `biosTools/`：通用工具链（`uefitool`、`ifrextractor`、`setup_var.efi`、`shellx64.efi`）
+- `biosTools/`：通用工具链（`uefitool`、`UEFIExtract`、`ifrextractor`、`setup_var.efi`、`shellx64.efi`）
 - `firmwares/`：按设备型号与 BIOS 版本归档的 Setup 模块及 IFR 表单文本
 - `BIOSUtilities/`：Dell PFS 固件解包依赖脚本
 
@@ -46,7 +46,7 @@ fs0:
 
 ---
 
-### A. Dell G15 5511 (11代酷睿，指南版本BIOS 1.45.0)
+### A. Dell G15 5511 (11代酷睿，BIOS 1.45.0 / 1.46.0)
 
 - **基础解锁（降压 + PCIe 4.0）**
   ```efi
@@ -148,7 +148,7 @@ fs0:
 
 ## 六、变量地址备忘表
 
-### A. Dell G15 5511 (11代酷睿，BIOS 1.45.0)
+### A. Dell G15 5511 (11代酷睿，BIOS 1.45.0 / 1.46.0)
 
 | 功能 | 变量位置 | 目标值 | 默认值 | 作用说明 |
 | :--- | :--- | :--- | :--- | :--- |

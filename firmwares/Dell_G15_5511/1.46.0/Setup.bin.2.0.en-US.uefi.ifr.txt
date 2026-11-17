@@ -1,0 +1,118 @@
+Program version: 1.6.1, Extraction mode: UEFI, SHA256: a38ee282589850b1fd9fd8b53f7ddad445588be6dd49f88824035d7b276d042b
+FormSet Guid: 985EEE91-BCAC-4238-8778-57EFDC93F24E, Title: "Platform Information Menu", Help: "This selection displays important platform information."
+	Guid Guid: 0F0B1735-87A0-4193-B266-538C38AF48CE, ExtendedOpCode: Class, Class: 0x1
+	Guid Guid: 0F0B1735-87A0-4193-B266-538C38AF48CE, ExtendedOpCode: SubClass, SubClass: 0x0
+	DefaultStore DefaultId: 0x0, Name: ""
+	DefaultStore DefaultId: 0x1, Name: ""
+	VarStoreEfi Guid: EC87D643-EBA4-4BB5-A1E5-3F3E36B20DA9, VarStoreId: 0x1, Attributes: 0x7, Size: 0xAEC, Name: "Setup"
+	VarStore Guid: E770BB69-BCB4-4D04-9E97-23FF9456FEAC, VarStoreId: 0xF000, Size: 0x1, Name: "SystemAccess"
+	VarStore Guid: EC87D643-EBA4-4BB5-A1E5-3F3E36B20DA9, VarStoreId: 0x100B, Size: 0xB1, Name: "SetupVolatileData"
+	Form FormId: 0x1000, Title: "Platform Information Menu"
+		Subtitle Prompt: "BIOS Information", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "BIOS Vendor", Help: "", Text: "N/A"
+		Text Prompt: "Client Silicon Version", Help: "", Text: "N/A"
+		Text Prompt: "Project Version", Help: "", Text: "N/A"
+		Text Prompt: "Build Date", Help: "", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Subtitle Prompt: "FSP Information", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "FSP version", Help: "FSP version information", Text: "N/A"
+		Text Prompt: "RC version", Help: "RC version information", Text: "N/A"
+		Text Prompt: "Build Date", Help: "Build Date information", Text: "N/A"
+		Text Prompt: "FSP Mode", Help: "FSP mode information, API or Dispatch", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Subtitle Prompt: "Board Information", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "Board Name", Help: "Displays the Board Name.", Text: "N/A"
+		Text Prompt: "Board ID", Help: "Displays the Board ID.", Text: "N/A"
+		Text Prompt: "Fab ID", Help: "Displays the Fab ID", Text: "N/A"
+		Text Prompt: "LAN PHY Revision", Help: "Displays LAN PHY Revision.", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Subtitle Prompt: "Processor Information", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "Name", Help: "Displays the Processor Details.", Text: "N/A"
+		Text Prompt: "Type", Help: "Displays the Processor Type.", Text: "N/A"
+		Text Prompt: "Speed", Help: "Displays the Processor Speed.", Text: "N/A"
+		Text Prompt: "ID", Help: "Displays the Processor ID.", Text: "N/A"
+		Text Prompt: "Stepping", Help: "Displays the Processor Stepping.", Text: "Unknown"
+		Text Prompt: "Package", Help: "Displays the Processor Package.", Text: "N/A"
+		Text Prompt: "Number of Processors", Help: "Displays number of CPU cores.", Text: "xCore(s) / yThread(s)"
+		Text Prompt: "Microcode Revision", Help: "CPU Microcode Revision", Text: "Not loaded"
+		Text Prompt: "GT Info", Help: "Processor GT Info. Only valid if SNB stepping is D0 or above.", Text: "Not Applicable"
+		Text Prompt: "eDRAM Size", Help: "eDRAM Size supported by the SKU", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x5, Value: 0x4
+			Text Prompt: "IGFX VBIOS Version", Help: "IGFX VBIOS Version", Text: "N/A"
+			Text Prompt: "IGFX GOP Version", Help: "IGFX GOP Version", Text: "N/A"
+		End 
+		Text Prompt: "PCIe GEN4 Dekel FW Version", Help: "Dekel Firmware Version used by PCIe Gen4 PHY", Text: "N/A"
+		Text Prompt: "Memory RC Version", Help: "Memory RC Version", Text: "N/A"
+		Text Prompt: "Total Memory", Help: "Total Memory in the System.", Text: "N/A"
+		Text Prompt: "Memory Speed", Help: "Displays the Frequency of Memory", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Subtitle Prompt: "PCH Information", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "Name", Help: "PCH Name", Text: "UnKnown"
+		Text Prompt: "PCH SKU", Help: "PCH SKU", Text: "UnKnown"
+		Text Prompt: "Stepping", Help: "PCH Stepping", Text: "UnKnown"
+		Text Prompt: "ChipsetInit Base Revision", Help: "ChipsetInit Base Revision", Text: "Unknown"
+		Text Prompt: "ChipsetInit OEM Revision", Help: "ChipsetInit OEM Revision", Text: "Unknown"
+		Text Prompt: "Package", Help: "PCH Package", Text: "N/A"
+		Text Prompt: "TXT Capability of Platform/PCH", Help: "Platform/PCH TXT capability", Text: "Not Supported"
+		Text Prompt: "Production Type", Help: "Platform Production Type", Text: "Not Supported"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "Dual Output Fast Read support", Help: "Dual Output Fast Read support", Text: "N/A"
+		Text Prompt: "Read ID/Status Clock Freq", Help: "Read ID and Read Status Clock Frequency", Text: "N/A"
+		Text Prompt: "Write and Erase Clock Freq", Help: "Write and Erase Clock Frequency ", Text: "N/A"
+		Text Prompt: "Fast Read Clock Freq", Help: "Fast Read Clock Frequency", Text: "N/A"
+		Text Prompt: "Fast Read support", Help: "Fast Read support", Text: "N/A"
+		Text Prompt: "Number of Components", Help: "Number of Components", Text: "N/A"
+		SuppressIf 
+			EqIdVal QuestionId: 0x4, Value: 0x0
+			Text Prompt: "SPI Component 1 Density", Help: "SPI Component 1 Density", Text: "N/A"
+		End 
+		Text Prompt: "SPI Component 0 Density", Help: "SPI Component 0 Density", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Text Prompt: "EC FW Version", Help: "EC FW Version", Text: "N/A"
+		Text Prompt: "eSPI Flash Sharing Mode", Help: "eSPI Flash Sharing Mode", Text: "N/A"
+		Text Prompt: "ME FW Version", Help: "ME Firmware Version", Text: "N/A"
+		Text Prompt: "ME Firmware SKU", Help: "ME Firmware SKU", Text: "N/A"
+		Text Prompt: "PMC FW Version", Help: "PMC Firmware Version", Text: "N/A"
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		Date Prompt: "System Date", Help: "Set the Date. Use 'Right/Left' to switch between Date elements.", QuestionFlags: 0x0, QuestionId: 0x1, VarStoreId: 0x0, VarStoreInfo: 0xFFFF, Flags: 0x10
+			Default DefaultId: 0x0 Value: 2005-01-01
+		End 
+		Time Prompt: "System Time", Help: "Set the Time. Use 'Right/Left' to switch between Time elements.", QuestionFlags: 0x0, QuestionId: 0x2, VarStoreId: 0x0, VarStoreInfo: 0xFFFF, Flags: 0x10
+			Default DefaultId: 0x0 Value: 00:00:00
+		End 
+		Subtitle Prompt: "", Help: "", Flags: 0x0
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x3, Value: 0x0
+			Text Prompt: "Access Level", Help: "", Text: "User"
+		End 
+		SuppressIf 
+			EqIdVal QuestionId: 0x3, Value: 0x1
+			Text Prompt: "Access Level", Help: "", Text: "Administrator"
+		End 
+		DisableIf 
+			True 
+			Numeric Prompt: "", Help: "", QuestionFlags: 0x0, QuestionId: 0x3, VarStoreId: 0xF000, VarOffset: 0x0, Flags: 0x10, Size: 8, Min: 0x0, Max: 0xFF, Step: 0x0
+			End 
+			Numeric Prompt: "", Help: "", QuestionFlags: 0x0, QuestionId: 0x4, VarStoreId: 0x1, VarOffset: 0x5E0, Flags: 0x10, Size: 8, Min: 0x0, Max: 0xFF, Step: 0x0
+			End 
+			Numeric Prompt: "", Help: "", QuestionFlags: 0x0, QuestionId: 0x5, VarStoreId: 0x100B, VarOffset: 0x2, Flags: 0x10, Size: 8, Min: 0x0, Max: 0xFF, Step: 0x0
+			End 
+		End 
+	End 
+End 
